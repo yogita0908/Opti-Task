@@ -1,0 +1,95 @@
+.profile-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 60px;
+  padding-right: 20px;
+}
+
+.profile-dropdown {
+  background: white;
+  width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.profile-header {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.profile-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  color: #6366F1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-info-small {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-info-small strong {
+  font-size: 16px;
+}
+
+.role-small {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.profile-menu {
+  padding: 8px;
+}
+
+.profile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #0F172A;
+}
+
+.profile-menu-item.clickable {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-menu-item.clickable:hover {
+  background: #F8FAFC;
+}
+
+.profile-menu-item.danger {
+  color: #EF4444;
+}
+
+.profile-menu-item.danger:hover {
+  background: #FEE2E2;
+}
+
+.profile-menu-divider {
+  height: 1px;
+  background: #E2E8F0;
+  margin: 8px 0;
+}

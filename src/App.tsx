@@ -1,25 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import Login from "./Login";
+import Register from "./Register";
+import Dashboard from "./Dashboard";
+import { User, tasks as initialTasks, employees as initialEmployees, users as initialUsers } from "./data";
+import { initializeData } from "./storageUtils";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [showRegister, setShowRegister] = useState(false);
+
+  // 👉 Initialize localStorage on first load
+  useEffect(() => {
+    initializeData(initialTasks, initialEmployees, initialUsers);
+  }, []);
+
+  const handleLogin = (user: User) => {
+    setCurrentUser(user);
+  };
+
+  const handleRegister = (user: User) => {
+    setCurrentUser(user);
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+  };
+
+  // If logged in → show Dashboard
+  if (currentUser) {
+    return <Dashboard user={currentUser} onLogout={handleLogout} />;
+  }
+
+  // If not logged in → show Login or Register
+  return showRegister ? (
+    <Register
+      onRegister={handleRegister}
+      onSwitchToLogin={() => setShowRegister(false)}
+    />
+  ) : (
+    <Login
+      onLogin={handleLogin}
+      onSwitchToRegister={() => setShowRegister(true)}
+    />
   );
 }
 
